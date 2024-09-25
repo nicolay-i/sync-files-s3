@@ -1,6 +1,8 @@
 import {App, PluginSettingTab, Setting, TextComponent} from "obsidian";
 import MyPlugin from "../main";
 import {createElement, Eye, EyeOff} from "lucide";
+import {uploadFile} from "../utils/uploadCodeExample";
+
 
 export interface MyPluginSettings {
 	s3_host: string
@@ -91,18 +93,14 @@ export class SampleSettingTab extends PluginSettingTab {
 					await this.plugin.saveSettings();
 				}));
 
-		if (this.plugin.settings.s3_backet_name != '')
-			new Setting(containerEl)
-				.setName('S3 backet name')
-				.setDesc('Example: 2266ee23-sample-name-...')
-				.addText(text => text
-					.setValue(this.plugin.settings.s3_backet_name)
-					.onChange(async (value) => {
-						this.plugin.settings.s3_backet_name = value;
-						await this.plugin.saveSettings();
-					}));
+		new Setting(containerEl)
+			.addButton((button) => {
+				button.setButtonText("Check upload file");
+				button.onClick(() => {
+					uploadFile( 'sample.md', 'hello world')
+				});
 
-
+			})
 
 	}
 }
