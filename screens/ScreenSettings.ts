@@ -38,7 +38,6 @@ export class SampleSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName('S3 host')
-			.setDesc('Example: s3.timeweb.cloud')
 			.addText(text => text
 				.setValue(this.plugin.settings.s3_host)
 				.onChange(async (value) => {
