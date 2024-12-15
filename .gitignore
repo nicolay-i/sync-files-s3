@@ -5,6 +5,8 @@
 *.iml
 .idea
 
+info.md
+
 # npm
 node_modules
 
@@ -20,3 +22,6 @@ data.json
 
 # Exclude macOS Finder (System Explorer) View States
 .DS_Store
+
+syncFile.json
+syncFileRemote.json
